@@ -3,7 +3,7 @@
 
 安装包下载地址:
 
-[短信炸弹](https://yuxie2025.github.io/download/signature.apk) 下载地址:
+[签名获取](https://yuxie2025.github.io/download/signature.apk) 下载地址:
 
 https://yuxie2025.github.io/download/signature.apk
 
