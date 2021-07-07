@@ -3,9 +3,9 @@
 
 安装包下载地址:
 
-[签名获取](https://yuxie2025.github.io/download/signature.apk) 下载地址:
+[签名获取](https://raw.githubusercontent.com/yuxie2025/signature/master/apk/signature.apk) 下载地址:
 
-https://yuxie2025.github.io/download/signature.apk
+https://raw.githubusercontent.com/yuxie2025/signature/master/apk/signature.apk
 
 ![下载链接](https://raw.githubusercontent.com/yuxie2025/signature/master/app/img/download_qr.png)
 
