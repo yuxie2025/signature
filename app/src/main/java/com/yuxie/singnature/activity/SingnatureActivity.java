@@ -2,6 +2,7 @@ package com.yuxie.singnature.activity;
 
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.Loader;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +13,7 @@ import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
 
 import com.baselib.base.BaseActivity;
+import com.baselib.ui.widget.LoadingDialog;
 import com.baselib.uitls.CommonUtils;
 import com.baselib.uitls.NoBugLinearLayoutManager;
 import com.blankj.utilcode.util.AppUtils;
@@ -53,10 +55,19 @@ public class SingnatureActivity extends BaseActivity {
 
         setTitle("应用签名");
 
-        datas = AppUtils.getAppsInfo();
-
+        datas = new ArrayList<>();
         initRecyclerView();
 
+        initData();
+    }
+
+    private void initData() {
+        new Thread(() -> {
+            datas = AppUtils.getAppsInfo();
+            runOnUiThread(() -> {
+                isShowSystem(isShowSystem.isChecked());
+            });
+        }).start();
     }
 
     protected void setStatusBarColor() {
@@ -74,8 +85,6 @@ public class SingnatureActivity extends BaseActivity {
 
             SingnatureDetailsActivity.start(this, packageName);
         }));
-
-        isShowSystem(isShowSystem.isChecked());
 
         isShowSystem.setOnCheckedChangeListener((CompoundButton compoundButton, boolean b) -> {
             isShowSystem(b);
@@ -112,7 +121,6 @@ public class SingnatureActivity extends BaseActivity {
     }
 
     private void isShowSystem(boolean isShowSystem) {
-
         if (!isShowSystem) {
             List<AppUtils.AppInfo> appInfos = new ArrayList<>();
             for (int i = 0; i < datas.size(); i++) {

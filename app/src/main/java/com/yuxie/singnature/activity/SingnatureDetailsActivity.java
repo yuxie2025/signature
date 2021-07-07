@@ -36,6 +36,10 @@ public class SingnatureDetailsActivity extends BaseActivity {
     TextView tvSignatureSha1;
     @BindView(R.id.tv_lower_case_signature_sha1)
     TextView tvLowerCaseSignatureSha1;
+    @BindView(R.id.tv_version)
+    TextView tvVersion;
+    @BindView(R.id.tv_version_code)
+    TextView tvVersionCode;
 
     public static void start(Activity activity, String packageName) {
         Intent intent = new Intent(activity, SingnatureDetailsActivity.class);
@@ -69,6 +73,9 @@ public class SingnatureDetailsActivity extends BaseActivity {
         } else {
             tvIsSystem.setText("否");
         }
+
+        tvVersion.setText(AppUtils.getAppVersionName(packageName));
+        tvVersionCode.setText(String.valueOf(AppUtils.getAppVersionCode(packageName)));
 
         Signature[] signatures = AppUtils.getAppSignature(packageName);
         byte[] signatByte = signatures[0].toByteArray();
